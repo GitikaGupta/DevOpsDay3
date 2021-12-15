@@ -1,0 +1,14 @@
+sudo: true
+os: trusty
+cache: false
+language: java
+jdk:
+- openjdk8
+before_script:
+- sleep 11
+script: 
+- python main.py
+- bash build.sh || travis_terminate 1;
+- bash deploy.sh || travis_terminate 1;
+
+after_script: python --version
